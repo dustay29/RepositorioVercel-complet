@@ -2,12 +2,10 @@
   "version": 2,
   "builds": [
     {
-      // 1. Configuração do Front-end (Vite/React)
       "src": "FrontEnd---Diego-Completo-main/package.json",
       "use": "@vercel/static-build",
       "config": { 
         "distDir": "dist",
-        // Adicionando explicitamente o comando para resolver o erro 'vite: comando não encontrado'
         "buildCommand": "npm run build"
       }
     },
@@ -20,12 +18,10 @@
   "routes": [
     {
       "src": "/api/(.*)",
-      // 3. Rota da API deve apontar para o arquivo de entrada EXATO do Back-end
       "dest": "BackEnd-Diego-Completo-main/server.js" 
     },
     {
       "src": "/(.*)",
-      // 4. Rota principal deve apontar para a pasta EXATA do Front-end
       "dest": "FrontEnd---Diego-Completo-main/$1"
     }
   ]

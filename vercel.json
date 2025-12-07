@@ -10,7 +10,6 @@
       }
     },
     {
-      // 2. Configuração do Back-end (Serverless Function)
       "src": "BackEnd-Diego-Completo-main/server.js", 
       "use": "@vercel/node" 
     }

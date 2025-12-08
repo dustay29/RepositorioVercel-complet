@@ -1,9 +1,9 @@
-// src/api/api.js
+// src/api/api.jsx (ou .js, com a URL hardcoded para simplificar)
 
 import axios from "axios";
 
-// **CORREÇÃO FINAL SIMPLIFICADA:** Substitua a URL de exemplo abaixo
-// pela URL PÚBLICA do seu Serviço Web (Back-end) no Render.
+// ** ATENÇÃO: SUBSTITUA A URL ABAIXO **
+// Coloque aqui a URL pública COMPLETA do seu Serviço Web (Back-end) no Render.
 const BACKEND_URL = "https://repositoriovercel-complet.onrender.com"; 
 
 const api = axios.create({

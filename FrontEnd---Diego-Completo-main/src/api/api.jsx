@@ -2,12 +2,12 @@
 
 import axios from "axios";
 
-// O Vite lê a variável VITE_APP_API_URL que você configurou no painel do Render
-const API_URL = import.meta.env.VITE_APP_API_URL;
+// **CORREÇÃO FINAL SIMPLIFICADA:** Substitua a URL de exemplo abaixo
+// pela URL PÚBLICA do seu Serviço Web (Back-end) no Render.
+const BACKEND_URL = "https://repositoriovercel-complet.onrender.com"; 
 
 const api = axios.create({
-  // A baseURL agora aponta para a URL pública do seu Serviço Web (Back-end) no Render
-  baseURL: API_URL, 
+  baseURL: BACKEND_URL, 
 });
 
 api.interceptors.request.use((config) => {

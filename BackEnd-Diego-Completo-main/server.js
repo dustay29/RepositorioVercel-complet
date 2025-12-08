@@ -1,4 +1,4 @@
-// server.js (CÓDIGO FINAL CORRIGIDO PARA O RENDER)
+// server.js (CÓDIGO FINAL CORRIGIDO PARA O RENDER COM CORS ESPECÍFICO)
 
 import cors from 'cors';
 import express from 'express';
@@ -10,8 +10,8 @@ import { database } from './database.js'; // Conexão com o Sequelize
 const app = express();
 
 // ** CORREÇÃO CRÍTICA DO CORS **
-// Sua URL de Front-end no Render. O servidor Express só aceitará requisições desta origem.
-const allowedOrigins = ['https://repositoriovercel-complet.onrender.com']; 
+// URL do seu Front-end no Render que será permitida.
+const allowedOrigins = ['https://repositoriovercel-complet-1.onrender.com']; 
 
 const corsOptions = {
   origin: (origin, callback) => {

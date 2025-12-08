@@ -1,12 +1,11 @@
-// src/api/api.js (Código Final Corrigido)
+// src/api/api.js
 
 import axios from "axios";
 
 const api = axios.create({
-  // CORREÇÃO CRÍTICA: Removido "http://localhost:3000".
-  // Usando "" (string vazia) ou "/" o Axios usará o domínio atual do Vercel
-  // como base, e a chamada será resolvida pela sua Serverless Function.
-  baseURL: "/", 
+  // CORREÇÃO FINAL: Usamos "/api" porque o vercel.json está configurado
+  // para rotear tudo que começa com /api/ para a sua Serverless Function de Back-end.
+  baseURL: "/api", 
 });
 
 api.interceptors.request.use((config) => {

@@ -1,15 +1,33 @@
-// server.js (Corrigido para o Render)
+// server.js (CÓDIGO FINAL CORRIGIDO PARA O RENDER)
 
 import cors from 'cors';
 import express from 'express';
 import 'dotenv/config';
 import router from './routes/routes.js';
-// ... (outras imports)
-import { database } from './database.js'; 
+// import {Usuarios} from './models/usuarios.js';
+// import {Chamados} from './models/chamados.js';
+import { database } from './database.js'; // Conexão com o Sequelize
 const app = express();
 
-app.use(cors());
-app.use(express.json());
+// ** CORREÇÃO CRÍTICA DO CORS **
+// Sua URL de Front-end no Render. O servidor Express só aceitará requisições desta origem.
+const allowedOrigins = ['https://repositoriovercel-complet.onrender.com']; 
+
+const corsOptions = {
+  origin: (origin, callback) => {
+    // Permite requisições sem origem (ex: Postman) ou da sua URL Front-end
+    if (!origin || allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS'));
+    }
+  },
+  methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+  credentials: true,
+};
+
+app.use(cors(corsOptions)); // Aplica o CORS específico
+app.use(express.json()); 
 app.use(router)
 
 // Conexão com o Banco de Dados
@@ -20,12 +38,10 @@ try {
   console.error('❌ Não foi possível conectar ao banco de dados:', error);
 }
 
-// -----------------------------------------------------
 // ⚡ ESSENCIAL PARA O RENDER: Adicionar app.listen() de volta
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
-  console.log(`🚀 Servidor rodando em http://localhost:${PORT}`);
+  console.log(`🚀 Servidor rodando na porta ${PORT}`);
 });
-// -----------------------------------------------------
 
 // Remova ou comente: export default app;

@@ -2,10 +2,12 @@
 
 import axios from "axios";
 
+// O Vite lê a variável VITE_APP_API_URL que você configurou no painel do Render
+const API_URL = import.meta.env.VITE_APP_API_URL;
+
 const api = axios.create({
-  // CORREÇÃO FINAL: Usamos "/api" porque o vercel.json está configurado
-  // para rotear tudo que começa com /api/ para a sua Serverless Function de Back-end.
-  baseURL: "/api", 
+  // A baseURL agora aponta para a URL pública do seu Serviço Web (Back-end) no Render
+  baseURL: API_URL, 
 });
 
 api.interceptors.request.use((config) => {
